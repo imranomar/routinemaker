@@ -1,0 +1,57 @@
+<html>
+    <head>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css"  type="text/css" >
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css"  type="text/css" >
+        <link rel="stylesheet" href="timetable.css"  type="text/css" >
+        <script src='js/jquery.js'></script>        
+        <script src='js/moment.js'></script>
+        <script src='js/prayertimes.js'></script> <!-- http://praytimes.org/manual/#Downloads_and_Examples -->
+        <script src="js/moment-duration-format.js"></script>
+        <script src="js/processing.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.pulse.min.js"></script>
+        <script src='prayers.js'></script>
+        <script src='entry.js'></script>
+        <script src='entries.js'></script>
+        <script src='timetable.js'></script>
+        <script src='index.js'></script>
+    </head>
+    <body class="body">
+        <div class='container-fluid'>
+        <div id='output' class='output'></div>
+    </div>
+<pre>
+
+Requirements Now
+------------------
+
+
+.We need to know max dunya time of the year
+.We need to know min sleeping time of the year
+.We need to max sleep time in zuhur
+.More accurate Salah timings
+.Momment object for starting date - can create a moment object then pass moment.todate to timetable
+.Prompt n mintues before 
+.All entried should show only for the specific date / time
+.Draw in a nice manner
+.Be able to draw for multiple days ( at least 30 days )
+.Sleep time should adjust itself
+.Should list priorities always
+.Should allow to easily make changes in the timetable
+
+Requirements Later
+------------------
+.Salaah should show overlaps or splits
+.remind me n mintues for every nimaaz. different for magrib and fajr
+.remind me n mintues before an event takes place
+.keep reminding me until I start doing the task
+.ask me if I finished the task, if not enter reason why or select same one as before
+my_day.add(title,days,time,duration,relative_duration,verb,relative_to);
+
+NOTE: We start with isha as that's the most crucial time to get up in the morning
+
+</pre>
+        
+    </body>
+</html>
