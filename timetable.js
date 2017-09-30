@@ -46,7 +46,7 @@ class Timetable
         this.append("Barkat in working early even if time less<br>");
         this.append("Impossible get 8 hours sleep every night<br><br>");
         this.append("TimeTable for " + this.obj_date);
-        this.append("<table class='table' style='width:170px'>");
+        this.append("<table class='table' style='width:200px'>");
         
         for(i=0;i<=count-1;i++)
         {
@@ -303,7 +303,7 @@ class Timetable
                 if(sleep_time<480) //less than 8 hours
                 {
                     remaining_sleep = 480 - sleep_time;
-                    alert(remaining_sleep);
+                    //alert(remaining_sleep);
                 }
             }
         }

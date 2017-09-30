@@ -211,7 +211,6 @@ function load()
 
     //createand show timetable for given date from the entries
     var m_date = moment();
-    m_date.add(2,"day");
     obj_timetable = new Timetable(m_date.toDate(),obj_entries);
     obj_timetable.draw();
 }
