@@ -20,11 +20,54 @@ var arr_prayers = new Array();
 var obj_entries;
 var obj_timetable;
 
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    navigator.notification.alert(
+        'You are the winner!',  // message
+        alertDismissed,         // callback
+        'Game Over',            // title
+        'Done'                  // buttonName
+    );
+    
+    
+    navigator.notification.confirm(
+        'You are the winner!', // message
+         onConfirm,            // callback to invoke with index of button pressed
+        'Game Over',           // title
+        ['Restart','Exit']     // buttonLabels
+    );
+
+    
+    navigator.notification.prompt(
+        'Please enter your name',  // message
+        onPrompt,                  // callback to invoke
+        'Registration',            // title
+        ['Ok','Exit'],             // buttonLabels
+        'Jane Doe'                 // defaultText
+    );
+
+    navigator.notification.beep(2);
+}
+
+function onPrompt(results) {
+    alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+}
+
+
+function onConfirm(buttonIndex) {
+    alert('You selected button ' + buttonIndex);
+}
+
+function alertDismissed()
+{
+    alert('js alert: you dimissed notification.alert');
+}
+
 $(document).ready(function(){
     load();
 
     //highlight whats happening now
-    setInterval(highlight_current_activity,500);
+    setInterval(highlight_current_activity,3000);
 
     $('button').click(function(){
     });
@@ -33,6 +76,31 @@ $(document).ready(function(){
 
 function highlight_current_activity()
 {
+    navigator.notification.alert(
+        'You are the winner!',  // message
+        alertDismissed,         // callback
+        'Game Over',            // title
+        'Done'                  // buttonName
+    );
+    
+    
+    navigator.notification.confirm(
+        'You are the winner!', // message
+         onConfirm,            // callback to invoke with index of button pressed
+        'Game Over',           // title
+        ['Restart','Exit']     // buttonLabels
+    );
+
+    
+    navigator.notification.prompt(
+        'Please enter your name',  // message
+        onPrompt,                  // callback to invoke
+        'Registration',            // title
+        ['Ok','Exit'],             // buttonLabels
+        'Jane Doe'                 // defaultText
+    );
+
+    navigator.notification.beep(2);
     obj_timetable.highlight_current_activity();
 }
 
@@ -43,6 +111,21 @@ function load()
  
     obj_entries = new Entries();
     //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+
+    // add Sleep at fixed time
+    obj_entry = new Entry();
+    obj_entry.title = "Sleep";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Fri";
+    obj_entry.time = "10:00";
+    obj_entry.duration = null;
+    obj_entry.relative_to = null;
+    obj_entry.relative_time = null;
+    obj_entry.till = "Fajr"; 
+    obj_entry.relative_to_till = null;
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    /*
     
     obj_entry = new Entry("Masjid Time 1","Sun,Mon,Tue,Wed,Thu,Sat",null,60,null,"Isha",null,null);
     obj_entries.add(obj_entry);
@@ -193,10 +276,12 @@ function load()
     obj_entries.add(obj_entry);
     delete obj_entry;
 
+    */
+
 
     //HIKMAT
     //papa given self esteem wasnot based on absolute knowledge
-    //paga based life goals aspirations and he think one whould be like him is the same as above
+    //papa based life goals aspirations and he think one whould be like him is the same as above
     //if earning takes me in ghaflat, not earing is not bigger ghaflat
     //socho gay kay nahiin ho a to kabhi nahiin hoga
     //mahmeed gaznawi made 17 attacks

@@ -41,12 +41,9 @@ class Timetable
         var day_of_week
         
         
-        this.append("<b>Note:<br></b>");
-        this.append("Barkat in sleeping early even if time less<br>");
-        this.append("Barkat in working early even if time less<br>");
-        this.append("Impossible get 8 hours sleep every night<br><br>");
-        this.append("TimeTable for " + this.obj_date);
-        this.append("<table class='table' style='width:200px'>");
+        var tmp_m_date = moment(this.obj_date);
+        this.append("<h2>" + tmp_m_date.format('ddd-MMM-YYYY')+ "</h2>");
+        this.append("<table class='table' width='0%' >");
         
         for(i=0;i<=count-1;i++)
         {
@@ -96,7 +93,7 @@ class Timetable
            
             
             humanized =  this.humanize(entry.duration);
-            this.append("<tr><td id='"+entry.title.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-')+"'>" +entry.title.substring(0,6) + "...</td><td><span class='badge'>"+humanized+"</span><span class='badge green'>"+ entry.m_start.format("hh:mma")+"</span></td>");
+            this.append("<tr><td id='"+entry.title.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-')+"'>" +entry.title + "</td><td><span class='badge'>"+humanized+"</span><span class='badge green'>"+ entry.m_start.format("hh:mma")+"</span></td>");
 
             //  
         }
