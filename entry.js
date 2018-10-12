@@ -15,6 +15,6 @@ class Entry
         this.relative_to = relative_to;
         this.till = till;
         this.relative_to_till = relative_to_till;
-        this.type = '';
+        this.type = ''; //i not put in constructor yet
     }
 }

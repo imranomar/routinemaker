@@ -1,0 +1,439 @@
+
+    // add Sleep at 22:00 till fajr
+    obj_entry = new Entry();
+    obj_entry.title = "Sleep";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+    obj_entry.time = "22:00";
+    obj_entry.duration = null;
+    obj_entry.relative_to = null;
+    obj_entry.relative_time = null;
+    obj_entry.till = "Fajr"; 
+    obj_entry.relative_to_till = null;
+    obj_entry.type = "Sleep";
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    // add Freetime before 15 mintues beforesleep
+    obj_entry = new Entry();
+    obj_entry.title = "Freetime - Night";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+    obj_entry.time = null;
+    obj_entry.duration = 15;
+    obj_entry.relative_to = "Sleep";
+    obj_entry.relative_time = -15;
+    obj_entry.till = null; 
+    obj_entry.relative_to_till = null;
+    obj_entry.type = "Free";
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    // add Nimaz before 15 mintues beforesleep
+    obj_entry = new Entry();
+    obj_entry.title = "Remaining Salah /  Tahajjud";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+    obj_entry.time = null;
+    obj_entry.duration = 15;
+    obj_entry.relative_to = "Freetime - Night";
+    obj_entry.relative_time = -15;
+    obj_entry.till = null; 
+    obj_entry.relative_to_till = null;
+    obj_entry.type = "Deen";
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    // add Dinner before 10 mintues beforesleep
+    obj_entry = new Entry();
+    obj_entry.title = "Walk + Ruqya";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+    obj_entry.time = null;
+    obj_entry.duration = 10;
+    obj_entry.relative_to = "Remaining Salah /  Tahajjud";
+    obj_entry.relative_time = -10;
+    obj_entry.till = null; 
+    obj_entry.relative_to_till = null;
+    obj_entry.type = "Health";
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    // add Dinner before 10 mintues beforesleep
+    obj_entry = new Entry();
+    obj_entry.title = "Return Home";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+    obj_entry.time = null;
+    obj_entry.duration = 30;
+    obj_entry.relative_to = "Walk + Ruqya";
+    obj_entry.relative_time = -30;
+    obj_entry.till = null; 
+    obj_entry.relative_to_till = null;
+    obj_entry.type = "Deen";
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+    //obj_entry = new Entry("Zikar To Sunrise (Masjid Time)","All",null,null,null,"Fajr","Sunrise",null);
+    obj_entry = new Entry();
+    obj_entry.title = "Zikar To Sunrise (Masjid Time)";
+    obj_entry.days = "Fri,Sat";
+    obj_entry.time = null;
+    obj_entry.duration = null;
+    obj_entry.relative_time = null;
+    obj_entry.relative_to = "Fajr";
+    obj_entry.till = "Sunrise"; 
+    obj_entry.relative_to_till = null;
+    obj_entry.type = "Deen";
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+    //obj_entry = new Entry("Zikar To Sunrise (Masjid Time)","All",null,null,null,"Fajr","Sunrise",null);
+    obj_entry = new Entry();
+    obj_entry.title = "Walk + Listen Ruqya";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+    obj_entry.time = null;
+    obj_entry.duration = 10;
+    obj_entry.relative_time = null;
+    obj_entry.relative_to = "Zikar To Sunrise (Masjid Time)";
+    obj_entry.till = null; 
+    obj_entry.relative_to_till = null;
+    obj_entry.type = "Health";
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+    obj_entry = new Entry();
+    obj_entry.title = "Breakfast";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+    obj_entry.time = null;
+    obj_entry.duration = 20;
+    obj_entry.relative_time = null;
+    obj_entry.relative_to = "Walk + Listen Ruqya";
+    obj_entry.till = null; 
+    obj_entry.relative_to_till = null;
+    obj_entry.type = "Eat";
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+    obj_entry = new Entry();
+    obj_entry.title = "Morning Tea";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+    obj_entry.time = null;
+    obj_entry.duration = 20;
+    obj_entry.relative_time = null;
+    obj_entry.relative_to = "Breakfast";
+    obj_entry.till = null; 
+    obj_entry.relative_to_till = null;
+    obj_entry.type = "Free";
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+    obj_entry = new Entry();
+    obj_entry.title = "Dunya";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+    obj_entry.time = null;
+    obj_entry.duration = null;
+    obj_entry.relative_time = null;
+    obj_entry.relative_to = "Morning Tea";
+    obj_entry.till = "zuhur"; 
+    obj_entry.relative_to_till = -10;
+    obj_entry.type = "Dunya";
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+     //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+     obj_entry = new Entry();
+     obj_entry.title = "Break";
+     obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+     obj_entry.time = null;
+     obj_entry.duration = null;
+     obj_entry.relative_time = null;
+     obj_entry.relative_to = "Dunya";
+     obj_entry.till = "zuhur"; 
+     obj_entry.relative_to_till = null;
+     obj_entry.type = "Free";
+     obj_entries.add(obj_entry);
+     delete obj_entry;
+
+     //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+     obj_entry = new Entry();
+     obj_entry.title = "Dunya 2";
+     obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+     obj_entry.time = null;
+     obj_entry.duration = null;
+     obj_entry.relative_time = null;
+     obj_entry.relative_to = "Zuhur";
+     obj_entry.till = "Asr"; 
+     obj_entry.relative_to_till = -50;
+     obj_entry.type = "Dunya";
+     obj_entries.add(obj_entry);
+     delete obj_entry;
+
+     //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+     obj_entry = new Entry();
+     obj_entry.title = "Lunch";
+     obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+     obj_entry.time = null;
+     obj_entry.duration = 20;
+     obj_entry.relative_time = null;
+     obj_entry.relative_to = "Dunya 2";
+     obj_entry.till = null; 
+     obj_entry.relative_to_till = null;
+     obj_entry.type = "Eat";
+     obj_entries.add(obj_entry);
+     delete obj_entry;
+
+     //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+     obj_entry = new Entry();
+     obj_entry.title = "Kaylulah";
+     obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+     obj_entry.time = null;
+     obj_entry.duration = null;
+     obj_entry.relative_time = null;
+     obj_entry.relative_to = "Lunch";
+     obj_entry.till = "Asr"; 
+     obj_entry.relative_to_till = null;
+     obj_entry.type = "Sleep";
+     obj_entries.add(obj_entry);
+     delete obj_entry;
+
+     //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+     obj_entry = new Entry();
+     obj_entry.title = "Tasbihaat";
+     obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+     obj_entry.time = null;
+     obj_entry.duration = 30;
+     obj_entry.relative_time = null;
+     obj_entry.relative_to = "Asr";
+     obj_entry.till = null; 
+     obj_entry.relative_to_till = null;
+     obj_entry.type = "Deen";
+     obj_entries.add(obj_entry);
+     delete obj_entry;
+
+     //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+     obj_entry = new Entry();
+     obj_entry.title = "Dunya 3";
+     obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+     obj_entry.time = null;
+     obj_entry.duration = 60;
+     obj_entry.relative_time = null;
+     obj_entry.relative_to = "Tasbihaat";
+     obj_entry.till = null; 
+     obj_entry.relative_to_till = null;
+     obj_entry.type = "Dunya";
+     obj_entries.add(obj_entry);
+     delete obj_entry;
+
+     //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+     obj_entry = new Entry();
+     obj_entry.title = "Free - Tea / Relax";
+     obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+     obj_entry.time = null;
+     obj_entry.duration = 15;
+     obj_entry.relative_time = null;
+     obj_entry.relative_to = "Dunya 3";
+     obj_entry.till = null; 
+     obj_entry.relative_to_till = null;
+     obj_entry.type = "Free";
+     obj_entries.add(obj_entry);
+     delete obj_entry;
+
+      //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+      obj_entry = new Entry();
+      obj_entry.title = "Taleem";
+      obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+      obj_entry.time = null;
+      obj_entry.duration = 15;
+      obj_entry.relative_time = null;
+      obj_entry.relative_to = "Free - Tea / Relax";
+      obj_entry.till = null; 
+      obj_entry.relative_to_till = null;
+      obj_entry.type = "Deen";
+      obj_entries.add(obj_entry);
+      delete obj_entry;
+
+     //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+     obj_entry = new Entry();
+     obj_entry.title = "Leave for Muwailah";
+     obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+     obj_entry.time = null;
+     obj_entry.duration = 30;
+     obj_entry.relative_time = null;
+     obj_entry.relative_to = "Free - Tea / Relax";
+     obj_entry.till = null; 
+     obj_entry.relative_to_till = null;
+     obj_entry.type = "Deen";
+     obj_entries.add(obj_entry);
+     delete obj_entry;
+
+      //Entry(title, days, time, duration, relative_time, relative_to, till, relative_to_till
+      obj_entry = new Entry();
+      obj_entry.title = "Magrib to Isha (Masjid Time)";
+      obj_entry.days = "Sun,Mon,Tue,Wed,Thu,Sat";
+      obj_entry.time = null;
+      obj_entry.duration = 30;
+      obj_entry.relative_time = null;
+      obj_entry.relative_to = "Magrib";
+      obj_entry.till = "Isha"; 
+      obj_entry.relative_to_till = null;
+      obj_entry.type = "Deen";
+      obj_entries.add(obj_entry);
+      delete obj_entry;
+ 
+ 
+
+    //ruqya
+
+    /*
+    
+    obj_entry = new Entry("Masjid Time 1","Sun,Mon,Tue,Wed,Thu,Sat",null,60,null,"Isha",null,null);
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry("Home Taleem","All",null,15,null,"Masjid Time 1",null,null);
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry("Remaining Nimaaz","All",null,15,null,"Home Taleem",null,null);
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry("Free Time 1","All",null,20,null,"Remaining Nimaaz",null,null);
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry("Sleep","All",null,null,null,"Free Time 1","Fajr",null);
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry("Zikar To Sunrise (Masjid Time)","All",null,null,null,"Fajr","Sunrise",null);
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry("Breakfast","All",null,20,null,"Sunrise",null,null);
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry("Exercise","Sun,Mon,Tue,Wed,Thu",null,15,null,"Breakfast",null,null);
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry("Bath","All","Sun,Mon,Tue,Wed,Thu",15,null,"Exercise",null,null);
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry();
+    obj_entry.title = "Get Ready";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu";
+    obj_entry.time = null;
+    obj_entry.duration = 30;
+    obj_entry.relative_time = null;
+    obj_entry.relative_to = "Bath";
+    obj_entry.till = null;
+    obj_entry.relative_to_till = null;
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+
+    obj_entry = new Entry();
+    obj_entry.title = "Dunya 1";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu";
+    obj_entry.time = null;
+    obj_entry.duration = null;
+    obj_entry.relative_time = null;
+    obj_entry.relative_to = "Get Ready";
+    obj_entry.till = "Zuhur";
+    obj_entry.relative_to_till = -20;
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry();
+    obj_entry.title = "Freetime 2";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu";
+    obj_entry.time = null;
+    obj_entry.duration = null;
+    obj_entry.relative_time = null;
+    obj_entry.relative_to = "Dunya 1";
+    obj_entry.till = "Zuhur";
+    obj_entry.relative_to_till = null;
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry();
+    obj_entry.title = "Dunya 2";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu";
+    obj_entry.time = null;
+    obj_entry.duration = null;
+    obj_entry.relative_time = null;
+    obj_entry.relative_to = "Zuhur";
+    obj_entry.till = "Asr";
+    obj_entry.relative_to_till = null;
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    obj_entry = new Entry();
+    obj_entry.title = "Dunya 3";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu";
+    obj_entry.time = null;
+    obj_entry.duration = null;
+    obj_entry.relative_to = "Asr";
+    obj_entry.relative_time = null;
+    obj_entry.till = "Magrib"; 
+    obj_entry.relative_to_till = -90;
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    // add freetime after dunya 20
+    obj_entry = new Entry();
+    obj_entry.title = "Freetime 3";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu";
+    obj_entry.time = null;
+    obj_entry.duration = 20;
+    obj_entry.relative_to = "Dunya 3";
+    obj_entry.relative_time = null;
+    obj_entry.till = null; 
+    obj_entry.relative_to_till = null;
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    // add food time after freetime 30
+    obj_entry = new Entry();
+    obj_entry.title = "Dinner";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu";
+    obj_entry.time = null;
+    obj_entry.duration = 30;
+    obj_entry.relative_to = "Freetime 3";
+    obj_entry.relative_time = null;
+    obj_entry.till = null; 
+    obj_entry.relative_to_till = null;
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    // add Zikar & Quran  (Masjid Time) till Magrib
+    obj_entry = new Entry();
+    obj_entry.title = "Zikar & Quran  (Masjid Time)";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu";
+    obj_entry.time = null;
+    obj_entry.duration = null;
+    obj_entry.relative_to = "Dinner";
+    obj_entry.relative_time = null;
+    obj_entry.till = "Magrib"; 
+    obj_entry.relative_to_till = null;
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    // add Miasjid time from Magrib to Isha
+    obj_entry = new Entry();
+    obj_entry.title = "Masjid Time";
+    obj_entry.days = "Sun,Mon,Tue,Wed,Thu";
+    obj_entry.time = null;
+    obj_entry.duration = null;
+    obj_entry.relative_to = "Magrib";
+    obj_entry.relative_time = null;
+    obj_entry.till = "Isha"; //it thinks isha for previous day
+    obj_entry.relative_to_till = null;
+    obj_entries.add(obj_entry);
+    delete obj_entry;
+
+    */

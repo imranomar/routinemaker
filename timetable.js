@@ -2,6 +2,7 @@ class Timetable
 {
     constructor(obj_date,obj_entries)
     {
+        echo("Timetable>Constructor")
         this.obj_date = obj_date;
         this.obj_prayers = new Prayers(obj_date);
         this.obj_entries = obj_entries;
@@ -17,13 +18,14 @@ class Timetable
             prayer = this.obj_prayers.arr_prayers[i];
             tmp_entry = new Entry(prayer.title,"All",prayer.time,prayer.duration,null,null,null,null);
             tmp_entry.m_start = prayer.m_start.clone();
-            tmp_entry.type = "prayer";
+            tmp_entry.type = "Prayer";
             this.obj_entries.add(tmp_entry);
         }
     }
 
     draw()
-    {   
+    {
+        echo("Timetable>draw")   
         this.calculate_times();
         this.obj_entries.sort();
         var i=0;
@@ -32,17 +34,21 @@ class Timetable
         var duration;
         var m_tmp;
         var total_dunya_time=0;
-        var total_masjid_time=0;
+        var total_deen_time=0;
         var total_sleep_time=0;
         var total_free_time=0;
+        var total_health_time=0;
+        var total_prayer_time=0;
         var minutes;
         var hours;
         var humanized;
         var day_of_week
+        var type;
         
         
         var tmp_m_date = moment(this.obj_date);
-        this.append("<h2>" + tmp_m_date.format('ddd-MMM-YYYY')+ "</h2>");
+        $('h1').html('Rountine Maker '+ " <h2>" + tmp_m_date.format('ddd-MMM-YYYY')+ "</h2>");
+
         this.append("<table class='table' width='0%' >");
         
         for(i=0;i<=count-1;i++)
@@ -65,45 +71,93 @@ class Timetable
             m_tmp = entry.m_start.clone();
             m_tmp.add(duration,"minutes");
   
+            type = ''; //reset for loop
             //calculate total dunya time
-            if(entry.title.search("Dunya")!=-1)
+            if(entry.type=="Dunya")
             {
                 total_dunya_time = total_dunya_time + entry.duration;
             }
-
-            //calculate total dunya time
-            if(entry.title.search("Masjid")!=-1)
+            else if(entry.type=="Deen")
             {
-                total_masjid_time = total_masjid_time + entry.duration;
+                total_deen_time = total_deen_time + entry.duration;
             }
-
             //calculate total dunya time
-            if(entry.title.search("Sleep")!=-1)
+            else if(entry.type=="Sleep")
             {
                 total_sleep_time = total_sleep_time + entry.duration;
             }
-
             //calculate total dunya time
-            if(entry.title.search("Free")!=-1)
+            else if(entry.type=="Free")
             {
                 total_free_time = total_free_time + entry.duration;
+            }
+            else if(entry.type=="Health")
+            {
+                total_health_time = total_health_time + entry.duration;
+            }
+            else if(entry.type=="Prayer")
+            {
+                total_prayer_time = total_prayer_time + entry.duration;
+            }
+            else
+            {
+                type = "other";
             }
 
             //duration humanized into hours and minutes
            
             
             humanized =  this.humanize(entry.duration);
-            this.append("<tr><td id='"+entry.title.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-')+"'>" +entry.title + "</td><td><span class='badge'>"+humanized+"</span><span class='badge green'>"+ entry.m_start.format("hh:mma")+"</span></td>");
+            this.append("<tr><td id='"+entry.title.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-')+"'>" +entry.title + "</td><td><span class='badge green'>"+ entry.m_start.format("hh:mma")+  "</span> - <span  class='badge green'>" + entry.m_start.add(entry.duration,"minutes").format("hh:mma") + "</span>");
+            
+            if (entry.type=="Deen")
+            {
+                this.append("&nbsp;<span class='badge'>"+humanized+"</span></td>");
+            }
+            else if (entry.type=="Sleep")
+            {
+                this.append("&nbsp;<span class='badge grey'>"+humanized+"</span></td>");
+            }
+            else if (entry.type=="Free")
+            {
+                this.append("&nbsp;<span class='badge red'>"+humanized+"</span></td>");
+            }
+            else if (entry.type=="Prayer")
+            {
+                this.append("&nbsp;<span class='badge purple'>"+humanized+"</span></td>");
+            }
+            else if (entry.type=="Travel")
+            {
+                this.append("&nbsp;<span class='badge black'>"+humanized+"</span></td>");
+            }
+            else if (entry.type=="Eat")
+            {
+                this.append("&nbsp;<span class='badge blue lighten-4 '>"+humanized+"</span></td>");
+            }
+            else if (entry.type=="Health")
+            {
+                this.append("&nbsp;<span class='badge deep-purple accent-1'>"+humanized+"</span></td>");
+            }
+            else
+            {
+                this.append("&nbsp;<span class='badge orange'>"+humanized+"</span></td>");
+            }
+            
 
             //  
         }
         this.append("</table>");
+        this.append("<small>");
         this.append("<br>Total Dunya Time:"+this.humanize(total_dunya_time));
-        this.append("<br>Total Majid Time:"+this.humanize(total_masjid_time));
+        this.append("<br>Total Prayer Time:"+this.humanize(total_prayer_time));
+        this.append("<br>Total Deen Time:"+this.humanize(total_deen_time));
         this.append("<br>Total Sleep Time:"+this.humanize(total_sleep_time));
+        this.append("<br>Total Health Time:"+this.humanize(total_health_time));
         this.append("<br>Total Free Time:"+this.humanize(total_free_time));
-        this.append("<br>Total Other:"+this.humanize((1440-total_free_time-total_dunya_time-total_masjid_time-total_sleep_time)));
-        this.append("<br>Total Dunya starts at "+this.obj_entries.arr_entries[this.obj_entries.find("Dunya 1")].m_start.format("hh:mma"));
+        
+        this.append("<br>Total Other:"+this.humanize((1440-total_free_time-total_dunya_time-total_deen_time-total_sleep_time)));
+        this.append("</small>");
+       // this.append("<br>Total Dunya starts at "+this.obj_entries.arr_entries[this.obj_entries.find("Dunya 1")].m_start.format("hh:mma")); //i gives error if no dunya object found
 
 
         // this.append("<br><br>");
@@ -196,6 +250,7 @@ class Timetable
 
     calculate_times()
     {
+        echo("Timetable>Calculate Times");
         var i=0;
         var count = this.obj_entries.arr_entries.length;
         var entry;
@@ -211,6 +266,7 @@ class Timetable
         var obj_entry_till;
         var sleep_time = 0;
         var remaining_sleep = 0;
+        var tmp_m_date;
        
         for(i=0;i<=count-1;i++)
         {
@@ -235,12 +291,14 @@ class Timetable
                     m_start = obj_entry_relative.m_start.clone();
                     if(relative_time>0)
                     {
+                        
                         m_start.add(relative_time+obj_entry_relative.duration,"minutes");
                         entry.m_start = m_start;
                     }
                     else if(relative_time<0)
                     {
-                        m_start.subtract(relative_time,"minutes");
+                        
+                        m_start.subtract(Math.abs(relative_time),"minutes"); //abs to remove nagative sign
                         entry.m_start = m_start;
                     }
                 }
@@ -290,6 +348,54 @@ class Timetable
                     }
                 }
                 
+            }
+
+            //if entry is at a fixed time
+            if(entry.time!=null)
+            {
+                tmp_m_date = moment(this.obj_date);
+                tmp_m_date.set({h: entry.time.split(':')[0], m: entry.time.split(':')[1]});
+                entry.m_start = tmp_m_date;
+
+                if(entry.till !== null)
+                {
+                    
+                    //find the till object
+                    index = this.obj_entries.find(entry.till);
+                    obj_entry_till = this.obj_entries.arr_entries[index] ;
+
+                    //Exceptional Case
+                    //if we need to calculate to isha then we assume its isha of next day
+                    //as timetable always starts from isha of today
+                    if(obj_entry_till.title=="Isha")
+                    {
+                        obj_entry_till.m_start.add(1,"days");
+                    }
+                    //i code repition below
+                    //check if there's a relative time to the till object
+                    if(entry.relative_to_till != null)
+                    {
+                        if(entry.relative_to_till>0)
+                        {
+                            var duration = moment.duration(obj_entry_till.m_start.diff(entry.m_start));
+                            duration = duration.asMinutes();
+                            entry.duration = duration + relative_to_till;
+                        }
+                        else
+                        {
+                            var duration = moment.duration(obj_entry_till.m_start.diff(entry.m_start));
+                            duration = duration.asMinutes();
+                            entry.duration = duration  + entry.relative_to_till;// plus as relative_to_till is already -ve
+                        }
+                    }
+                    else
+                    {
+                        var duration = moment.duration(obj_entry_till.m_start.diff(entry.m_start));
+                        duration = duration.asMinutes();
+                        entry.duration = duration;
+                    }
+                }
+             
             }
 
             //insert remaining sleep time;

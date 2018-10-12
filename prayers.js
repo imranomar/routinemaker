@@ -53,7 +53,6 @@ class Prayers
         obj_prayer = {title:"Isha",m_start:m_isha,time:isha,duration:35};
         this.arr_prayers.push(obj_prayer);
 
-
         echo(fajr);;echo(sunrise);echo(zuhur);echo(asr);echo(magrib);echo(isha);
         echo(m_sunrise.format('MM-DD-YYYY hh:mm'));
     }
